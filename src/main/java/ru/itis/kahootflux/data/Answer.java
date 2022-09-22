@@ -6,4 +6,5 @@ import lombok.Value;
 public class Answer {
     String text;
     boolean correct;
+    Integer count;
 }

@@ -40,7 +40,7 @@ public class GameService {
     }
 
     private Game startGame(Quiz quiz, int pin) {
-        return new Game(null, quiz, pin, LocalDateTime.now(), null, Collections.emptyMap());
+        return new Game(null, quiz, pin, LocalDateTime.now(), null, Collections.emptyMap(), Collections.emptyMap());
     }
 
     public Mono<PlayerResponse> enroll(String id, String name) {
@@ -56,5 +56,9 @@ public class GameService {
         String userId = fieldGenerator.randomLatinString(6);
         return gameRepository.existsByIdAndPlayerId(gameId, userId)
                 .flatMap(exists -> exists ? generatePlayerId(gameId) : just(userId));
+    }
+
+    public Mono<Void> startQuestion(String id, String questionId) {
+        return gameRepository.markQuestionStarted(id, questionId);
     }
 }

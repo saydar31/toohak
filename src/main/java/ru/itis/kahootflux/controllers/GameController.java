@@ -16,14 +16,18 @@ public class GameController {
     }
 
     @PostMapping
-    public Mono<Game> startGame(@RequestParam String quizId){
+    public Mono<Game> startGame(@RequestParam String quizId) {
         return gameService.start(quizId);
     }
 
     @PostMapping("/{id}/enroll")
-    public Mono<PlayerResponse> enroll(@PathVariable String id, @RequestParam String name){
+    public Mono<PlayerResponse> enroll(@PathVariable String id, @RequestParam String name) {
         return gameService.enroll(id, name);
     }
 
+    @PostMapping("/{id}/start-question/{questionId}")
+    public Mono<Void> startQuestion(@PathVariable String id, @PathVariable String questionId) {
+        return gameService.startQuestion(id, questionId);
+    }
 
 }

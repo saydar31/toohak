@@ -54,4 +54,8 @@ public class GameRepositoryImpl {
                 .map(r -> player);
     }
 
+    public Mono<Void> markQuestionStarted(String id, String questionId) {
+
+        return mongoTemplate.updateFirst(query(where(ID_KEY).is(id)), null,Game.class).map(c -> null);
+    }
 }

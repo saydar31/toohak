@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Map;
 
 @Value
 @Document("quiz")
@@ -13,5 +14,5 @@ public class Quiz {
     String id;
     String name;
     String description;
-    List<Question> questions;
+    Map<Integer, Question> questions;
 }

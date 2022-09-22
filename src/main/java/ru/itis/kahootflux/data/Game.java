@@ -19,4 +19,5 @@ public class Game {
     LocalDateTime date;
     LocalDateTime finished;
     Map<String, Player> players;
+    Map<Integer, Question> questions;
 }
