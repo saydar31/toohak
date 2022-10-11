@@ -42,6 +42,11 @@ public class QuizController {
         return quizService.update(id, quiz);
     }
 
+    @GetMapping("/{id}")
+    public Flux<Question> getQuestions(@PathVariable long id){
+        return questionService.getQuestions(id);
+    }
+
     @PutMapping("/{id}/questions")
     public Flux<Question> setQuestions(@PathVariable long id, List<QuestionRequest> questions){
         return questionService.setQuestions(id, questions);

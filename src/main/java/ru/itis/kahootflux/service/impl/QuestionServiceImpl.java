@@ -23,7 +23,12 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Flux<Question> setQuestions(long quizId, List<QuestionRequest> questions) {
-        return questionRepository.saveAll(questions.stream().map(questionMapper::fromRequest).collect(Collectors.toUnmodifiableList()));
+        return questionRepository.saveAll(questionMapper.mapList(quizId, questions));
+    }
+
+    @Override
+    public Flux<Question> getQuestions(long quizId) {
+        return questionRepository.getAllByQuizId(quizId);
     }
 
 }

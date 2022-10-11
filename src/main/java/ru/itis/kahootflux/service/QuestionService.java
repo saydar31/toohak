@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface QuestionService {
     Flux<Question> setQuestions(long quizId, List<QuestionRequest> questions);
+
+    Flux<Question> getQuestions(long quizId);
 }
